@@ -3,6 +3,15 @@ Cake.AliaSql
 
 AliaSql Script Alias for Cake.
 
+To Install:
+```cmd
+if not exist tools\Cake.AliaSql\Cake.AliaSql.dll ( 
+	echo Installing Cake.AliaSql...
+	tools\nuget\nuget.exe install Cake.AliaSql -OutputDirectory tools -ExcludeVersion -NonInteractive -NoCache
+	echo.
+)
+```
+
 Example:
 ```C#
 Task("RebuildDatabase")
