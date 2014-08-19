@@ -14,6 +14,10 @@ if not exist tools\Cake.AliaSql\Cake.AliaSql.dll (
 
 Example:
 ```C#
+#r "tools/Cake.AliaSql/Cake.AliaSql.dll"
+
+...
+
 Task("RebuildDatabase")
 	.Does(() => {
 		AliaSql("Rebuild", new AliaSqlSettings
