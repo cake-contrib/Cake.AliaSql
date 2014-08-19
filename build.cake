@@ -10,6 +10,7 @@ var sourceDir = "./src";
 var buildDir = sourceDir + "/" + projectName + "/bin/" + configuration;
 var buildResultDir = "./build";
 var testResultsDir = buildResultDir + "/tests";
+var nugetDir = buildResultDir + "/nuget";
 var binDir = buildResultDir + "/bin";
 
 var solutionFile = sourceDir + "/" + projectName + ".sln";
@@ -21,7 +22,7 @@ Task("Clean")
 	.Does(() =>
 {
 	CleanDirectories(new DirectoryPath[] {
-		buildResultDir, binDir, testResultsDir});
+		buildResultDir, binDir, testResultsDir, nugetDir});
 });
 
 Task("Restore-NuGet-Packages")
@@ -91,9 +92,24 @@ Task("Zip-Files")
 	Zip(binDir, filename);
 });
 
+Task("Create-NuGet-Package")
+	.Description("Creates the NuGet package.")
+	.IsDependentOn("Copy-Files")
+	.Does(() =>
+{
+	NuGetPack("./Cake.AliaSql.nuspec", new NuGetPackSettings {
+		Version = version,
+        BasePath = binDir,
+        OutputDirectory = nugetDir,        
+        Symbols = false,
+        NoPackageAnalysis = true
+	});
+});
+
 Task("Package")
 	.Description("Zips package.")
-	.IsDependentOn("Zip-Files");
+	.IsDependentOn("Zip-Files")
+	.IsDependentOn("Create-NuGet-Package");
 
 Task("All")
 	.Description("Final target.")
