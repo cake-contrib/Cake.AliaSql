@@ -3,7 +3,7 @@ Cake.AliaSql
 
 AliaSql Script Alias for Cake.
 
-[![cake_aliasql MyGet Build Status](https://www.myget.org/BuildSource/Badge/cake_aliasql?identifier=9da3a1ac-97c3-49f3-bf99-7cf3a8c2034a)](https://www.myget.org/)
+[![cake_aliasql MyGet Build Status](https://www.myget.org/BuildSource/Badge/cake_aliasql?identifier=ea3bdebc-3992-40c0-99c0-dc48f0af2641)](https://www.myget.org/)
 
 To Install:
 ```cmd
