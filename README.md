@@ -31,3 +31,10 @@ Task("RebuildDatabase")
 		});
 	});
 ```
+
+Nightly Packages
+=================
+You can find CI builds at:
+https://www.myget.org/feed/cake_aliasql/package/Cake.AliaSql
+
+_Warning:_ These builds maybe be broken or unstable.
