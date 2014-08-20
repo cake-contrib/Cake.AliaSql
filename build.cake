@@ -11,7 +11,7 @@ var packageVersion = version + (label != null ? "-" + label : "");
 
 if (getEnvVar("BuildRunner") == "MyGet" && version == defaultVersion)
 {
-	packageVersionFormat = getEnvVar("VersionFormat");
+	var packageVersionFormat = getEnvVar("VersionFormat");
 	packageVersion = string.Format(packageVersionFormat, getEnvVar("BuildCounter"), version);
 }
 

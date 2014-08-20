@@ -8,6 +8,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.AliaSql.Tests", "Cake.AliaSql.Tests\Cake.AliaSql.Tests.csproj", "{1E746F47-9585-4754-BA76-EF151B1D9F2F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{60E66829-5894-4314-9490-A080597032A2}"
+	ProjectSection(SolutionItems) = preProject
+		..\build.cake = ..\build.cake
+		..\build.cmd = ..\build.cmd
+		..\Cake.AliaSql.nuspec = ..\Cake.AliaSql.nuspec
+		..\MyGet.cmd = ..\MyGet.cmd
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Meta", "Meta", "{795052E7-84E8-4B82-AF02-23D6141F9755}"
 	ProjectSection(SolutionItems) = preProject
