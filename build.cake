@@ -1,7 +1,7 @@
 Func<string, bool> hasEnvVar = varName => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(varName));
 Func<string, string> getEnvVar = varName => Environment.GetEnvironmentVariable(varName); // Get arguments passed to the script.
 
-const string defaultVersion = "0.1.1";
+const string defaultVersion = "0.1.2";
 
 var target = Argument("target", "All");
 var configuration = Argument("configuration", getEnvVar("Configuration") ?? "Debug");
@@ -11,8 +11,8 @@ var packageVersion = version + (label != null ? "-" + label : "");
 
 if (getEnvVar("BuildRunner") == "MyGet" && version == defaultVersion)
 {
-	packageVersion = getEnvVar("PackageVersion");
-	version = packageVersion.Split('-')[0];
+	packageVersionFormat = getEnvVar("VersionFormat");
+	packageVersion = string.Format(packageVersionFormat, getEnvVar("BuildCounter"), version);
 }
 
 // Define directories.
