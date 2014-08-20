@@ -1,14 +1,25 @@
-// Get arguments passed to the script.
-var target = Argument("target", "All");
-var configuration = Argument("configuration", "Release");
+Func<string, bool> hasEnvVar = varName => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(varName));
+Func<string, string> getEnvVar = varName => Environment.GetEnvironmentVariable(varName); // Get arguments passed to the script.
 
-var version = "0.1.1";
+const string defaultVersion = "0.1.1";
+
+var target = Argument("target", "All");
+var configuration = Argument("configuration", getEnvVar("Configuration") ?? "Debug");
+var version = Argument("version", defaultVersion);
+var label = Argument("label", (string)null);
+var packageVersion = version + (label != null ? "-" + label : "");
+
+if (getEnvVar("BuildRunner") == "MyGet" && version == defaultVersion)
+{
+	packageVersion = getEnvVar("PackageVersion");
+	version = packageVersion.Split('-')[0];
+}
 
 // Define directories.
 var projectName = "Cake.AliaSql";
 var sourceDir = "./src";
 var buildDir = sourceDir + "/" + projectName + "/bin/" + configuration;
-var buildResultDir = "./build";
+var buildResultDir = "./build/v" + packageVersion;
 var testResultsDir = buildResultDir + "/tests";
 var nugetDir = buildResultDir + "/nuget";
 var binDir = buildResultDir + "/bin";
@@ -43,7 +54,7 @@ Task("Patch-Assembly-Info")
 		Product = projectName,
 		Version = version,
 		FileVersion = version,
-		InformationalVersion = version,
+		InformationalVersion = packageVersion,
 		Copyright = "Copyright (c) Richard Simpson 2014"
 	});
 });
@@ -88,7 +99,7 @@ Task("Zip-Files")
 	.IsDependentOn("Copy-Files")
 	.Does(() =>
 {
-	var filename = buildResultDir + "/Cake_AliaSql-bin-v" + version + ".zip";
+	var filename = buildResultDir + "/Cake_AliaSql-bin-v" + packageVersion + ".zip";
 	Zip(binDir, filename);
 });
 
@@ -98,7 +109,7 @@ Task("Create-NuGet-Package")
 	.Does(() =>
 {
 	NuGetPack("./Cake.AliaSql.nuspec", new NuGetPackSettings {
-		Version = version,
+		Version = packageVersion,
         BasePath = binDir,
         OutputDirectory = nugetDir,        
         Symbols = false,
