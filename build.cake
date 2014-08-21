@@ -1,7 +1,7 @@
 Func<string, bool> hasEnvVar = varName => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(varName));
 Func<string, string> getEnvVar = varName => Environment.GetEnvironmentVariable(varName); // Get arguments passed to the script.
 
-const string defaultVersion = "0.1.2";
+const string defaultVersion = "0.2.0";
 
 var target = Argument("target", "All");
 var configuration = Argument("configuration", getEnvVar("Configuration") ?? "Debug");
