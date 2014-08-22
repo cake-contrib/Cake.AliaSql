@@ -76,7 +76,7 @@ namespace Cake.AliaSql
             if (settings.ToolPath != null)
                 return settings.ToolPath;
 
-            const string expression = "./tools/**/AliaSql.exe";
+            const string expression = "./tools/**/tools/AliaSQL.exe";
             return _globber.GetFiles(expression).FirstOrDefault();
         }
     }

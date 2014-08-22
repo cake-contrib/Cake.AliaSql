@@ -14,6 +14,15 @@ if not exist tools\Cake.AliaSql\Cake.AliaSql.dll (
 )
 ```
 
+To Grab AliaSQL:
+```cmd
+if not exist tools\AliaSQL\tools\AliaSQL.exe ( 
+    echo Installing AliaSQL...
+    tools\nuget\nuget.exe install AliaSQL -OutputDirectory tools -ExcludeVersion -NonInteractive -NoCache
+    echo.
+)
+```
+
 Example:
 ```C#
 #r "tools/Cake.AliaSql/Cake.AliaSql.dll"
@@ -24,7 +33,7 @@ Task("RebuildDatabase")
 	.Does(() => {
 		AliaSql("Rebuild", new AliaSqlSettings
 		{
-			ToolPath = "./tools/AliaSql/AliaSql.exe",
+			ToolPath = "./tools/AliaSQL/tools/AliaSQL.exe",
 			ConnectionString = ".\sqldb",
 			DatabaseName = "TestDatabase",
 			ScriptsFolder = "./src/Database/Scripts",
