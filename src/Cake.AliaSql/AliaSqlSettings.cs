@@ -32,5 +32,15 @@ namespace Cake.AliaSql
         /// The AliaSql command to run. (ex: TestData, Rebuild)
         /// </summary>
         public string Command { get; set; }
+
+        /// <summary>
+        /// The username used for authenticating with the database.
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// The password used for authenticating with the database.
+        /// </summary>
+        public string Password { get; set; }
     }
 }

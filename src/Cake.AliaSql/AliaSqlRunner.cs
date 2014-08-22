@@ -43,12 +43,24 @@ namespace Cake.AliaSql
 
         private ToolArgumentBuilder GetArguments(AliaSqlSettings settings)
         {
-            // AliaSql Format: [Command] [Database Server] [Database Name] [Scripts path] 
+            // AliaSql Format: [Command] [Database Server] [Database Name] [Scripts path] ([username] [password]?)
             var builder = new ToolArgumentBuilder();
             builder.AppendQuotedText(settings.Command);
             builder.AppendQuotedText(settings.ConnectionString);
             builder.AppendQuotedText(settings.DatabaseName);
             builder.AppendQuotedText(settings.ScriptsFolder.FullPath);
+
+            // If we have user authentication info, use it.
+            if (!string.IsNullOrEmpty(settings.UserName))
+            {
+                builder.AppendQuotedText(settings.UserName);
+
+                if (!string.IsNullOrEmpty(settings.Password))
+                {
+                    builder.AppendQuotedText(settings.Password);
+                }
+            }
+
             return builder;
         }
 
