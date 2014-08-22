@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 Func<string, bool> hasEnvVar = varName => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(varName));
 Func<string, string> getEnvVar = varName => Environment.GetEnvironmentVariable(varName); // Get arguments passed to the script.
 
@@ -13,6 +15,7 @@ if (getEnvVar("BuildRunner") == "MyGet" && version == defaultVersion)
 {
 	var packageVersionFormat = getEnvVar("VersionFormat");
 	packageVersion = string.Format(packageVersionFormat, getEnvVar("BuildCounter"), version);
+	packageVersion = new Regex("[0-9].[0-9].[0-9]").Replace(packageVersion, version);
 }
 
 // Define directories.
