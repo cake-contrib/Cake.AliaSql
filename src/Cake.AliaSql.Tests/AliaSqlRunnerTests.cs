@@ -30,7 +30,7 @@ namespace Cake.AliaSql.Tests
 
             [Theory]
             [InlineData("C:/AliaSql/AliaSql.exe", "C:/AliaSql/AliaSql.exe")]
-            [InlineData("./tools/AliaSql/AliaSql.exe", "/Working/tools/AliaSql/AliaSql.exe")]
+            [InlineData("./tools/AliaSQL/tools/AliaSQL.exe", "/Working/tools/AliaSQL/tools/AliaSQL.exe")]
             public void Should_Use_AliaSql_Runner_From_Tool_Path_If_Provided(string toolPath, string expected)
             {
                 // Given
@@ -60,7 +60,7 @@ namespace Cake.AliaSql.Tests
 
                 // Then
                 fixture.ProcessRunner.Received(1).Start(Arg.Is<ProcessStartInfo>(
-                    p => p.FileName == "/Working/tools/AliaSql.exe"));
+                    p => p.FileName == "/Working/tools/AliaSQL/tools/AliaSQL.exe"));
             }
 
             [Fact]

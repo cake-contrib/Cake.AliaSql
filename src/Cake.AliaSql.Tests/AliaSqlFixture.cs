@@ -25,10 +25,10 @@ namespace Cake.AliaSql.Tests
             Environment.WorkingDirectory = "/Working";
 
             Globber = Substitute.For<IGlobber>();
-            Globber.Match("./tools/**/AliaSql.exe").Returns(new[] { (FilePath)"/Working/tools/AliaSql.exe" });
+            Globber.Match("./tools/**/tools/AliaSQL.exe").Returns(new[] { (FilePath)"/Working/tools/AliaSQL/tools/AliaSQL.exe" });
 
             FileSystem = Substitute.For<IFileSystem>();
-            FileSystem.Exist(Arg.Is<FilePath>(a => a.FullPath == "/Working/tools/AliaSql.exe")).Returns(defaultToolExist);
+            FileSystem.Exist(Arg.Is<FilePath>(a => a.FullPath == "/Working/tools/AliaSQL/tools/AliaSQL.exe")).Returns(defaultToolExist);
 
             if (toolPath != null)
             {
