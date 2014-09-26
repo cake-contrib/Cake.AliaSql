@@ -43,12 +43,24 @@ namespace Cake.AliaSql
 
         private ProcessArgumentBuilder GetArguments(AliaSqlSettings settings)
         {
-            // AliaSql Format: [Command] [Database Server] [Database Name] [Scripts path] 
+            // AliaSql Format: [Command] [Database Server] [Database Name] [Scripts path] ([username] [password]?)
             var builder = new ProcessArgumentBuilder();
             builder.AppendQuoted(settings.Command);
             builder.AppendQuoted(settings.ConnectionString);
             builder.AppendQuoted(settings.DatabaseName);
             builder.AppendQuoted(settings.ScriptsFolder.FullPath);
+
+            // If we have user authentication info, use it.
+            if (!string.IsNullOrEmpty(settings.UserName))
+            {
+                builder.AppendQuotedText(settings.UserName);
+
+                if (!string.IsNullOrEmpty(settings.Password))
+                {
+                    builder.AppendQuotedText(settings.Password);
+                }
+            }
+
             return builder;
         }
 
@@ -76,7 +88,7 @@ namespace Cake.AliaSql
             if (settings.ToolPath != null)
                 return settings.ToolPath;
 
-            const string expression = "./tools/**/AliaSql.exe";
+            const string expression = "./tools/**/tools/AliaSQL.exe";
             return _globber.GetFiles(expression).FirstOrDefault();
         }
     }
