@@ -2,6 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Cake.AliaSql</id>
+	<title>Cake.AliaSql</title>
     <version>0.1.1</version>
     <authors>Richard Simpson</authors>
     <owners>Richard Simpson</owners>
@@ -12,7 +13,7 @@
     <iconUrl>https://raw.githubusercontent.com/ericdc1/AliaSQL/master/images/AliaSQL-200x200.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Richard Simpson 2014</copyright>
-    <releaseNotes>Initial Release.</releaseNotes>
+    <releaseNotes>Re-added 0.3 changes.</releaseNotes>
     <tags>Cake Script AliaSql</tags>
   </metadata>
   <files>

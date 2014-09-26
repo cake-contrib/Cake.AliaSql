@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 Func<string, bool> hasEnvVar = varName => !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable(varName));
 Func<string, string> getEnvVar = varName => Environment.GetEnvironmentVariable(varName); // Get arguments passed to the script.
 
-const string defaultVersion = "0.4.0";
+const string defaultVersion = "0.4.1";
 
 var target = Argument("target", "All");
 var configuration = Argument("configuration", getEnvVar("Configuration") ?? "Debug");
