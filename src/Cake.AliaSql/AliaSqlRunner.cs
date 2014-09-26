@@ -53,11 +53,11 @@ namespace Cake.AliaSql
             // If we have user authentication info, use it.
             if (!string.IsNullOrEmpty(settings.UserName))
             {
-                builder.AppendQuotedText(settings.UserName);
+                builder.AppendQuoted(settings.UserName);
 
                 if (!string.IsNullOrEmpty(settings.Password))
                 {
-                    builder.AppendQuotedText(settings.Password);
+                    builder.AppendQuotedSecret(settings.Password);
                 }
             }
 
