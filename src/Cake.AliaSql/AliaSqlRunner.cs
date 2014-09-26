@@ -41,14 +41,14 @@ namespace Cake.AliaSql
             Run(settings, GetArguments(settings), settings.ToolPath);
         }
 
-        private ToolArgumentBuilder GetArguments(AliaSqlSettings settings)
+        private ProcessArgumentBuilder GetArguments(AliaSqlSettings settings)
         {
             // AliaSql Format: [Command] [Database Server] [Database Name] [Scripts path] 
-            var builder = new ToolArgumentBuilder();
-            builder.AppendQuotedText(settings.Command);
-            builder.AppendQuotedText(settings.ConnectionString);
-            builder.AppendQuotedText(settings.DatabaseName);
-            builder.AppendQuotedText(settings.ScriptsFolder.FullPath);
+            var builder = new ProcessArgumentBuilder();
+            builder.AppendQuoted(settings.Command);
+            builder.AppendQuoted(settings.ConnectionString);
+            builder.AppendQuoted(settings.DatabaseName);
+            builder.AppendQuoted(settings.ScriptsFolder.FullPath);
             return builder;
         }
 
