@@ -19,7 +19,7 @@ namespace Cake.AliaSql.Tests
             Process.GetExitCode().Returns(0);
 
             ProcessRunner = Substitute.For<IProcessRunner>();
-            ProcessRunner.Start(Arg.Any<ProcessStartInfo>()).Returns(Process);
+            ProcessRunner.Start(Arg.Any<FilePath>(), Arg.Any<ProcessSettings>()).Returns(Process);
 
             Environment = Substitute.For<ICakeEnvironment>();
             Environment.WorkingDirectory = "/Working";

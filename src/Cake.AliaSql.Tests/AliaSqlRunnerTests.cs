@@ -44,8 +44,9 @@ namespace Cake.AliaSql.Tests
                 runner.Run(settings);
 
                 // Then
-                fixture.ProcessRunner.Received(1).Start(Arg.Is<ProcessStartInfo>(
-                    p => p.FileName == expected));
+                fixture.ProcessRunner.Received(1).Start(Arg.Is<FilePath>(
+                    fp => fp.FullPath == expected),
+                    Arg.Any<ProcessSettings>());
             }
 
             [Fact]
@@ -59,8 +60,9 @@ namespace Cake.AliaSql.Tests
                 runner.Run(GetDefault());
 
                 // Then
-                fixture.ProcessRunner.Received(1).Start(Arg.Is<ProcessStartInfo>(
-                    p => p.FileName == "/Working/tools/AliaSql.exe"));
+                fixture.ProcessRunner.Received(1).Start(Arg.Is<FilePath>(
+                    fp => fp.FullPath == "/Working/tools/AliaSql.exe"),
+                    Arg.Any<ProcessSettings>());
             }
 
             [Fact]
@@ -74,8 +76,9 @@ namespace Cake.AliaSql.Tests
                 runner.Run(GetDefault());
 
                 // Then
-                fixture.ProcessRunner.Received(1).Start(Arg.Is<ProcessStartInfo>(
-                    p => p.WorkingDirectory == "/Working"));
+                fixture.ProcessRunner.Received(1).Start(
+                    Arg.Any<FilePath>(),
+                    Arg.Is<ProcessSettings>(ps => ps.WorkingDirectory.FullPath == "/Working"));
             }
 
             [Fact]
@@ -83,7 +86,7 @@ namespace Cake.AliaSql.Tests
             {
                 // Given
                 var fixture = new AliaSqlFixture();
-                fixture.ProcessRunner.Start(Arg.Any<ProcessStartInfo>()).Returns((IProcess)null);
+                fixture.ProcessRunner.Start(Arg.Any<FilePath>(), Arg.Any<ProcessSettings>()).Returns((IProcess)null);
                 var runner = fixture.CreateRunner();
 
                 // When
