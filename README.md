@@ -34,7 +34,7 @@ Task("RebuildDatabase")
 		AliaSql("Rebuild", new AliaSqlSettings
 		{
 			ToolPath = "./tools/AliaSQL/tools/AliaSQL.exe",
-			ConnectionString = ".\sqldb",
+			ConnectionString = ".\\sqldb",
 			DatabaseName = "TestDatabase",
 			ScriptsFolder = "./src/Database/Scripts",
 		});
