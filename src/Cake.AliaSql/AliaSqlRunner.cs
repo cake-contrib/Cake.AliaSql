@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using Cake.Core;
 using Cake.Core.IO;
@@ -12,6 +13,7 @@ namespace Cake.AliaSql
     public sealed class AliaSqlRunner : Tool<AliaSqlSettings>
     {
         private readonly IGlobber _globber;
+        private readonly IFileSystem _fileSystem;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AliaSqlRunner"/> class.
@@ -25,6 +27,7 @@ namespace Cake.AliaSql
             : base(fileSystem, environment, processRunner)
         {
             _globber = globber;
+            _fileSystem = fileSystem;
         }
 
         /// <summary>
@@ -43,6 +46,30 @@ namespace Cake.AliaSql
 
         private ProcessArgumentBuilder GetArguments(AliaSqlSettings settings)
         {
+            if (string.IsNullOrWhiteSpace(settings.Command))
+            {                           
+               throw new ArgumentException(
+                    string.Format(CultureInfo.InvariantCulture, "{0}: Command not specified or missing ({1})", GetToolName(), settings.Command));
+            }
+
+            if (string.IsNullOrWhiteSpace(settings.ConnectionString))
+            {                           
+               throw new ArgumentException(
+                    string.Format(CultureInfo.InvariantCulture, "{0}: ConnectionString not specified or missing ({1})", GetToolName(), settings.ConnectionString));
+            }
+
+            if (string.IsNullOrWhiteSpace(settings.DatabaseName))
+            {                           
+               throw new ArgumentException(
+                    string.Format(CultureInfo.InvariantCulture, "{0}: DatabaseName not specified or missing ({1})", GetToolName(), settings.DatabaseName));
+            }
+
+            if (settings.ScriptsFolder==null || !_fileSystem.GetDirectory(settings.ScriptsFolder).Exists)
+            {                           
+               throw new ArgumentException(
+                    string.Format(CultureInfo.InvariantCulture, "{0}: ScriptsFolder not specified or missing ({1})", GetToolName(), settings.ScriptsFolder));
+            }
+
             // AliaSql Format: [Command] [Database Server] [Database Name] [Scripts path] ([username] [password]?)
             var builder = new ProcessArgumentBuilder();
             builder.AppendQuoted(settings.Command);
