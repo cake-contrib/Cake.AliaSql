@@ -1,44 +1,29 @@
-﻿using System.Diagnostics;
-using Cake.Core;
-using Cake.Core.IO;
-using NSubstitute;
+﻿using System.ComponentModel.Design;
+using Cake.Common.Tests.Fixtures;
+using Cake.Testing;
 
 namespace Cake.AliaSql.Tests
 {
-    public sealed class AliaSqlFixture
+    public sealed class AliaSqlFixture : ToolFixture<AliaSqlSettings> 
     {
-        public IFileSystem FileSystem { get; set; }
-        public IProcess Process { get; set; }
-        public IProcessRunner ProcessRunner { get; set; }
-        public ICakeEnvironment Environment { get; set; }
-        public IGlobber Globber { get; set; }
-
-        public AliaSqlFixture(FilePath toolPath = null, bool defaultToolExist = true)
+        protected override void RunTool()
         {
-            Process = Substitute.For<IProcess>();
-            Process.GetExitCode().Returns(0);
-
-            ProcessRunner = Substitute.For<IProcessRunner>();
-            ProcessRunner.Start(Arg.Any<FilePath>(), Arg.Any<ProcessSettings>()).Returns(Process);
-
-            Environment = Substitute.For<ICakeEnvironment>();
-            Environment.WorkingDirectory = "/Working";
-
-            Globber = Substitute.For<IGlobber>();
-            Globber.Match("./tools/**/tools/AliaSQL.exe").Returns(new[] { (FilePath)"/Working/tools/AliaSQL/tools/AliaSQL.exe" });
-
-            FileSystem = Substitute.For<IFileSystem>();
-            FileSystem.Exist(Arg.Is<FilePath>(a => a.FullPath == "/Working/tools/AliaSQL/tools/AliaSQL.exe")).Returns(defaultToolExist);
-
-            if (toolPath != null)
-            {
-                FileSystem.Exist(Arg.Is<FilePath>(a => a.FullPath == toolPath.FullPath)).Returns(true);
-            }
+            var tool =new AliaSqlRunner(FileSystem, Environment, Globber, ProcessRunner);
+            tool.Run(Settings);
         }
 
-        public AliaSqlRunner CreateRunner()
+        public AliaSqlFixture(bool scriptsFolderExists = true) : base("AliaSQL.exe")
         {
-            return new AliaSqlRunner(FileSystem, Environment, Globber, ProcessRunner);
+            Settings.Command = "Create";
+            Settings.ConnectionString = "localhost";
+            Settings.DatabaseName = "AdventureWorks";
+            Settings.ScriptsFolder = "/Working/scripts";
+            Environment.WorkingDirectory = "/Working";
+
+            if (scriptsFolderExists)
+            {
+                FileSystem.CreateDirectory("/Working/scripts");
+            }
         }
     }
 }

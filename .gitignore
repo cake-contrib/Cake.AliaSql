@@ -150,7 +150,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
-tools/xunit.runners/
+tools/xunit.runner.console/
 tools/cake/
 tools/Cake.AliaSql/
 

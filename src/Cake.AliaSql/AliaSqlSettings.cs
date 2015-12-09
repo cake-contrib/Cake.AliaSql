@@ -1,18 +1,13 @@
 ﻿using Cake.Core.IO;
+using Cake.Core.Tooling;
 
 namespace Cake.AliaSql
 {
     /// <summary>
     /// Contains settings used by <see cref="AliaSqlRunner"/>.
     /// </summary>
-    public class AliaSqlSettings
+    public class AliaSqlSettings : ToolSettings
     {       
-        /// <summary>
-        /// Gets or sets the tool path.
-        /// </summary>
-        /// <value>The tool path.</value>
-        public FilePath ToolPath { get; set; }
-
         /// <summary>
         /// The Connection String to connect to the target database.
         /// </summary>

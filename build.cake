@@ -77,7 +77,7 @@ Task("Run-Unit-Tests")
 	.IsDependentOn("Build")
 	.Does(() =>
 {
-	XUnit("./src/**/bin/" + configuration + "/*.Tests.dll", new XUnitSettings {
+	XUnit2("./src/**/bin/" + configuration + "/*.Tests.dll", new XUnit2Settings {
 		OutputDirectory = testResultsDir,
 		XmlReport = true,
 		HtmlReport = true
@@ -114,7 +114,7 @@ Task("Create-NuGet-Package")
 	NuGetPack("./Cake.AliaSql.nuspec", new NuGetPackSettings {
 		Version = packageVersion,
         BasePath = binDir,
-        OutputDirectory = nugetDir,        
+        OutputDirectory = nugetDir,
         Symbols = false,
         NoPackageAnalysis = true
 	});
