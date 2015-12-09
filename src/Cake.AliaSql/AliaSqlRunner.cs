@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using Cake.Core;
 using Cake.Core.IO;
-using Cake.Core.Utilities;
+using Cake.Core.Tooling;
 
 namespace Cake.AliaSql
 {
@@ -12,7 +12,6 @@ namespace Cake.AliaSql
     /// </summary>
     public sealed class AliaSqlRunner : Tool<AliaSqlSettings>
     {
-        private readonly IGlobber _globber;
         private readonly IFileSystem _fileSystem;
 
         /// <summary>
@@ -24,9 +23,8 @@ namespace Cake.AliaSql
         /// <param name="processRunner"></param>
         public AliaSqlRunner(IFileSystem fileSystem, ICakeEnvironment environment,
             IGlobber globber, IProcessRunner processRunner)
-            : base(fileSystem, environment, processRunner)
+            : base(fileSystem, environment, processRunner, globber)
         {
-            _globber = globber;
             _fileSystem = fileSystem;
         }
 
@@ -41,7 +39,7 @@ namespace Cake.AliaSql
                 throw new ArgumentNullException("settings");
             }
 
-            Run(settings, GetArguments(settings), settings.ToolPath);
+            Run(settings, GetArguments(settings));
         }
 
         private ProcessArgumentBuilder GetArguments(AliaSqlSettings settings)
@@ -101,22 +99,12 @@ namespace Cake.AliaSql
         }
 
         /// <summary>
-        /// Get AliaSql's default path.
+        /// Gets the possible names of the AliaSql's tool executable.
         /// </summary>
-        /// <param name="settings"></param>
-        /// <returns></returns>
-        protected override FilePath GetDefaultToolPath(AliaSqlSettings settings)
+        /// <returns>The tool executable name.</returns>
+        protected override IEnumerable<string> GetToolExecutableNames()
         {
-            if (settings == null)
-            {
-                throw new ArgumentNullException("settings");
-            }
-
-            if (settings.ToolPath != null)
-                return settings.ToolPath;
-
-            const string expression = "./tools/**/tools/AliaSQL.exe";
-            return _globber.GetFiles(expression).FirstOrDefault();
+            return new[] { "AliaSQL.exe" };
         }
     }
 }

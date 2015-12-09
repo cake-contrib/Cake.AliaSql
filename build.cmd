@@ -3,15 +3,15 @@
 :Build
 cls
 
-if not exist tools\Cake\Cake.exe ( 
+if not exist tools\Cake\Cake.exe (
 	echo Installing Cake...
 	tools\nuget\nuget.exe install Cake -OutputDirectory tools -ExcludeVersion -NonInteractive -NoCache
 	echo.
 )
 
-if not exist tools\xunit.runners\tools\xunit.console.exe (
+if not exist tools\xunit.runner.console\tools\xunit.console.exe (
 	echo Installing xUnit.net: Runners...
-	tools\nuget\nuget.exe install xunit.runners -OutputDirectory tools -ExcludeVersion -Version 1.9.2 -NonInteractive
+	tools\nuget\nuget.exe install xunit.runner.console -OutputDirectory tools -ExcludeVersion -Version 2.1.0 -NonInteractive
 	echo.
 )
 
@@ -27,7 +27,7 @@ rem Loop the build script.
 echo.
 set CHOICE=nothing
 echo (R)ebuild or (Enter) to exit
-set /P CHOICE= 
+set /P CHOICE=
 if /i "%CHOICE%"=="R" goto :Build
 
 :Quit

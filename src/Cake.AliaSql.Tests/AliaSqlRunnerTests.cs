@@ -17,11 +17,11 @@ namespace Cake.AliaSql.Tests
             public void Should_Throw_If_AliaSql_Runner_Was_Not_Found()
             {
                 // Given
-                var fixture = new AliaSqlFixture(defaultToolExist: false);
-                var runner = fixture.CreateRunner();
+                var fixture = new AliaSqlFixture();
+                fixture.GivenDefaultToolDoNotExist();
 
                 // When
-                var result = Record.Exception(() => runner.Run(GetDefault()));
+                var result = Record.Exception(() => fixture.Run());
 
                 // Then
                 Assert.IsType<CakeException>(result);
@@ -34,14 +34,11 @@ namespace Cake.AliaSql.Tests
             public void Should_Use_AliaSql_Runner_From_Tool_Path_If_Provided(string toolPath, string expected)
             {
                 // Given
-                var fixture = new AliaSqlFixture(expected);
-                var runner = fixture.CreateRunner();
-
-                var settings = GetDefault();
-                settings.ToolPath = toolPath;
+                var fixture = new AliaSqlFixture {Settings = {ToolPath = toolPath}};
+                fixture.GivenSettingsToolPathExist();
 
                 // When
-                runner.Run(settings);
+                fixture.Run();
 
                 // Then
                 fixture.ProcessRunner.Received(1).Start(Arg.Is<FilePath>(
@@ -54,14 +51,13 @@ namespace Cake.AliaSql.Tests
             {
                 // Given
                 var fixture = new AliaSqlFixture();
-                var runner = fixture.CreateRunner();
 
                 // When
-                runner.Run(GetDefault());
+                fixture.Run();
 
                 // Then
                 fixture.ProcessRunner.Received(1).Start(Arg.Is<FilePath>(
-                    fp => fp.FullPath == "/Working/tools/AliaSQL/tools/AliaSQL.exe"),
+                    fp => fp.FullPath == "/Working/tools/AliaSQL.exe"),
                     Arg.Any<ProcessSettings>());
             }
 
@@ -70,10 +66,9 @@ namespace Cake.AliaSql.Tests
             {
                 // Given
                 var fixture = new AliaSqlFixture();
-                var runner = fixture.CreateRunner();
 
                 // When
-                runner.Run(GetDefault());
+                fixture.Run();
 
                 // Then
                 fixture.ProcessRunner.Received(1).Start(
@@ -86,15 +81,14 @@ namespace Cake.AliaSql.Tests
             {
                 // Given
                 var fixture = new AliaSqlFixture();
-                fixture.ProcessRunner.Start(Arg.Any<FilePath>(), Arg.Any<ProcessSettings>()).Returns((IProcess)null);
-                var runner = fixture.CreateRunner();
+                fixture.GivenProcessCannotStart();
 
                 // When
-                var result = Record.Exception(() => runner.Run(GetDefault()));
+                var result = Record.Exception(() => fixture.Run());
 
                 // Then
-                Assert.IsType<CakeException>(result);
                 Assert.Equal("AliaSql: Process was not started.", result.Message);
+                Assert.IsType<CakeException>(result);
             }
 
             [Fact]
@@ -102,41 +96,28 @@ namespace Cake.AliaSql.Tests
             {
                 // Given
                 var fixture = new AliaSqlFixture();
-                fixture.Process.GetExitCode().Returns(1);
-                var runner = fixture.CreateRunner();
+                fixture.GivenProcessExitsWithCode(1);
 
                 // When
-                var result = Record.Exception(() => runner.Run(GetDefault()));
+                var result = Record.Exception(() => fixture.Run());
 
                 // Then
-                Assert.IsType<CakeException>(result);
                 Assert.Equal("AliaSql: Process returned an error.", result.Message);
+                Assert.IsType<CakeException>(result);
             }
 
             [Fact]
             public void Should_Throw_If_No_Arguments_Folder()
             {
                 // Given
-                var fixture = new AliaSqlFixture();
-                fixture.Process.GetExitCode().Returns(1);
-                var runner = fixture.CreateRunner();
+                var fixture = new AliaSqlFixture {Settings = new AliaSqlSettings()};
+                fixture.GivenProcessExitsWithCode(1);
 
                 // When
-                var result = Record.Exception(() => runner.Run(new AliaSqlSettings()));
+                var result = Record.Exception(() => fixture.Run());
 
                 // Then
-                Assert.IsType<NullReferenceException>(result);
-            }
-
-            private AliaSqlSettings GetDefault()
-            {
-                return new AliaSqlSettings
-                {
-                    Command = "",
-                    ConnectionString = "",
-                    DatabaseName = "",
-                    ScriptsFolder = new DirectoryPath("/Working/scripts/")
-                };
+                Assert.IsType<ArgumentException>(result);
             }
         }
     }
