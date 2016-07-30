@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using Cake.Core;
 using Cake.Core.IO;
 using NSubstitute;
 using Xunit;
-using Xunit.Extensions;
 
 namespace Cake.AliaSql.Tests
 {
@@ -102,7 +100,7 @@ namespace Cake.AliaSql.Tests
                 var result = Record.Exception(() => fixture.Run());
 
                 // Then
-                Assert.Equal("AliaSql: Process returned an error.", result.Message);
+                Assert.Equal("AliaSql: Process returned an error (exit code 1).", result.Message);
                 Assert.IsType<CakeException>(result);
             }
 

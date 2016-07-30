@@ -32,6 +32,7 @@ namespace Cake.Common.Tests.Fixtures
         public FakeEnvironment Environment { get; set; }
         public IGlobber Globber { get; set; }
         public TToolSettings Settings { get; set; }
+        public IToolLocator ToolLocator { get; set; }
 
         protected ToolFixture(string toolFilename)
         {
@@ -47,6 +48,11 @@ namespace Cake.Common.Tests.Fixtures
             Environment = FakeEnvironment.CreateUnixEnvironment();
             FileSystem = new FakeFileSystem(Environment);
             Globber = new Globber(FileSystem, Environment);
+            ToolLocator = new ToolLocator(
+                Environment,
+                new ToolRepository(Environment),
+                new ToolResolutionStrategy(FileSystem, Environment, Globber, new FakeConfiguration())
+                );
 
             // Create the default tool path.
             FileSystem.CreateFile(GetDefaultToolPath());

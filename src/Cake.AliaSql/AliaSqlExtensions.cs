@@ -72,8 +72,8 @@ namespace Cake.AliaSql
                 throw new ArgumentNullException("settings");
             }
 
-            var runner = new AliaSqlRunner(context.FileSystem, context.Environment, context.Globber,
-                context.ProcessRunner);
+            var runner = new AliaSqlRunner(context.FileSystem, context.Environment, context.ProcessRunner,
+                context.Tools);
 
             runner.Run(settings);
         }
@@ -99,8 +99,8 @@ namespace Cake.AliaSql
 
             settings.Command = command;
 
-            var runner = new AliaSqlRunner(context.FileSystem, context.Environment, context.Globber,
-                context.ProcessRunner);
+            var runner = new AliaSqlRunner(context.FileSystem, context.Environment, context.ProcessRunner,
+                context.Tools);
 
             runner.Run(settings);
         }
