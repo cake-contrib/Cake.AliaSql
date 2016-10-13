@@ -14,19 +14,18 @@ namespace Cake.AliaSql
     {
         private readonly IFileSystem _fileSystem;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AliaSqlRunner"/> class.
-        /// </summary>
-        /// <param name="fileSystem"></param>
-        /// <param name="environment"></param>
-        /// <param name="globber"></param>
-        /// <param name="processRunner"></param>
-        public AliaSqlRunner(IFileSystem fileSystem, ICakeEnvironment environment,
-            IGlobber globber, IProcessRunner processRunner)
-            : base(fileSystem, environment, processRunner, globber)
-        {
-            _fileSystem = fileSystem;
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="AliaSqlRunner"/> class.
+		/// </summary>
+		/// <param name="fileSystem"></param>
+		/// <param name="environment"></param>
+		/// <param name="processRunner"></param>
+		/// <param name="tools"></param>
+	    public AliaSqlRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IToolLocator tools)
+			: base(fileSystem, environment, processRunner, tools)
+	    {
+		    _fileSystem = fileSystem;
+	    }
 
         /// <summary>
         /// Runs AliaSql with the provided settings.

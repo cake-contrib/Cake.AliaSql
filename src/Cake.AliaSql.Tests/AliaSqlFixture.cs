@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.Design;
-using Cake.Common.Tests.Fixtures;
+﻿using Cake.Common.Tests.Fixtures;
 using Cake.Testing;
 
 namespace Cake.AliaSql.Tests
@@ -8,7 +7,7 @@ namespace Cake.AliaSql.Tests
     {
         protected override void RunTool()
         {
-            var tool =new AliaSqlRunner(FileSystem, Environment, Globber, ProcessRunner);
+            var tool = new AliaSqlRunner(FileSystem, Environment, ProcessRunner, ToolLocator);
             tool.Run(Settings);
         }
 
