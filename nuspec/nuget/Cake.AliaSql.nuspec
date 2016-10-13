@@ -2,14 +2,14 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Cake.AliaSql</id>
-	<title>Cake.AliaSql</title>
-    <version>0.1.1</version>
+    <title>Cake.AliaSql</title>
+    <version>0.0.0</version>
     <authors>Richard Simpson</authors>
     <owners>Richard Simpson</owners>
     <description>AliaSql extension for Cake.</description>
     <summary>Adds AliaSql helpers for cake scripts.</summary>
-    <licenseUrl>https://github.com/RichiCoder1/Cake.AliaSql/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/RichiCoder1/Cake.AliaSql</projectUrl>
+    <licenseUrl>https://github.com/cake-contrib/Cake.AliaSql/blob/develop/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/cake-contrib/Cake.AliaSql</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/ericdc1/AliaSQL/master/images/AliaSQL-200x200.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Richard Simpson 2014</copyright>
@@ -20,6 +20,5 @@
     <file src="Cake.AliaSql.dll" />
     <file src="Cake.Core.dll" />
     <file src="Cake.Core.xml" />
-    <file src="LICENSE" />
   </files>
 </package>
