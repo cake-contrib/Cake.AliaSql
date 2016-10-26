@@ -5,8 +5,9 @@
 //------------------------------------------------------------------------------
 using System.Reflection;
 
+[assembly: AssemblyCompany("Cake Contributions")]
 [assembly: AssemblyProduct("Cake.AliaSql")]
 [assembly: AssemblyVersion("0.4.1")]
 [assembly: AssemblyFileVersion("0.4.1")]
 [assembly: AssemblyInformationalVersion("0.4.1")]
-[assembly: AssemblyCopyright("Copyright (c) Richard Simpson 2014")]
+[assembly: AssemblyCopyright("Copyright © Cake Contributions 2016 - Present")]
