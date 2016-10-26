@@ -18,7 +18,7 @@
   </metadata>
   <files>
     <file src="Cake.AliaSql.dll" />
-    <file src="Cake.Core.dll" />
-    <file src="Cake.Core.xml" />
+    <file src="Cake.AliaSql.pdb" />
+    <file src="Cake.AliaSql.xml" />
   </files>
 </package>
