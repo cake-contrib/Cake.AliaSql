@@ -31,6 +31,7 @@ namespace Cake.AliaSql
                 ScriptsFolder = scriptsPath
             });
         }
+
         /// <summary>
         /// Runs AliaSQL.
         /// </summary>
@@ -39,6 +40,8 @@ namespace Cake.AliaSql
         /// <param name="connectionString">The database connection string.</param>
         /// <param name="databaseName">The database name.</param>
         /// <param name="scriptsPath">The aliasql scripts path.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
         [CakeMethodAlias]
         public static void AliaSql(this ICakeContext context, string command,
             string connectionString, string databaseName, DirectoryPath scriptsPath, string username, string password)
