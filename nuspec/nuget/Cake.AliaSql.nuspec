@@ -5,20 +5,19 @@
     <title>Cake.AliaSql</title>
     <version>0.0.0</version>
     <authors>Richard Simpson</authors>
-    <owners>Richard Simpson</owners>
+    <owners>Richard Simpson, cake-contrib</owners>
     <description>AliaSql extension for Cake.</description>
     <summary>Adds AliaSql helpers for cake scripts.</summary>
     <licenseUrl>https://github.com/cake-contrib/Cake.AliaSql/blob/develop/LICENSE</licenseUrl>
     <projectUrl>https://github.com/cake-contrib/Cake.AliaSql</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/ericdc1/AliaSQL/master/images/AliaSQL-200x200.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright (c) Richard Simpson 2014</copyright>
-    <releaseNotes>Re-added 0.3 changes.</releaseNotes>
+    <copyright>Copyright (c) Cake Contributions 2016 - Present</copyright>
     <tags>Cake Script AliaSql</tags>
   </metadata>
   <files>
-    <file src="Cake.AliaSql.dll" />
-    <file src="Cake.AliaSql.pdb" />
-    <file src="Cake.AliaSql.xml" />
+    <file src="Cake.AliaSql.dll" target="lib\net45" />
+    <file src="Cake.AliaSql.pdb" target="lib\net45" />
+    <file src="Cake.AliaSql.xml" target="lib\net45" />
   </files>
 </package>
