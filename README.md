@@ -3,25 +3,6 @@ Cake.AliaSql
 
 AliaSql Script Alias for [Cake](https://github.com/cake-build/cake) build system.
 
-### Example usage:
-```cake
-#tool "AliaSQL"
-#addin "Cake.AliaSql"
-
-...
-
-Task("RebuildDatabase")
-	.Does(() => {
-		AliaSql("Rebuild", new AliaSqlSettings
-		{
-			ToolPath = "./tools/AliaSQL/tools/AliaSQL.exe",
-			ConnectionString = ".\\sqldb",
-			DatabaseName = "TestDatabase",
-			ScriptsFolder = "./src/Database/Scripts",
-		});
-	});
-```
-
 ## Information
 
 ||Stable|Pre-release|
@@ -39,6 +20,10 @@ Task("RebuildDatabase")
 ## Code Coverage
 
 [![Coverage Status](https://coveralls.io/repos/github/cake-contrib/Cake.AliaSql/badge.svg?branch=develop)](https://coveralls.io/github/cake-contrib/Cake.AliaSql?branch=develop)
+
+## Quick Links
+
+- [Documentation](https://cake-contrib.github.io/Cake.AliaSql/)
 
 ## Chat Room
 Come join in the conversation about Cake.AliaSql in our Gitter Chat Room
