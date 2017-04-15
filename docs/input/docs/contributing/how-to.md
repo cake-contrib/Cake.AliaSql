@@ -23,4 +23,4 @@ This repository is based around the Git Flow workflow, using feature branches an
 
 ## License
 
-Note that this project (and all contributions) fall under the MIT License terms.
+Note that this project (and all contributions) fall under the Apache License 2.0 terms.
