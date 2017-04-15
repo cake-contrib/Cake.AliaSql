@@ -274,3 +274,6 @@ __pycache__/
 tools/**
 !tools/packages.config
 BuildArtifacts/
+
+#Wyam
+packages.xml
