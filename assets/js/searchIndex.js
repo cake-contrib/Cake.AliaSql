@@ -34,16 +34,16 @@ var searchModule = function() {
 
     a({
         id:0,
-        title:"AliaSqlSettings",
-        content:"AliaSqlSettings",
+        title:"AliaSqlRunner",
+        content:"AliaSqlRunner",
         description:'',
         tags:''
     });
 
     a({
         id:1,
-        title:"AliaSqlRunner",
-        content:"AliaSqlRunner",
+        title:"AliaSqlSettings",
+        content:"AliaSqlSettings",
         description:'',
         tags:''
     });
@@ -57,14 +57,14 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlSettings',
-        title:"AliaSqlSettings",
+        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlRunner',
+        title:"AliaSqlRunner",
         description:""
     });
 
     y({
-        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlRunner',
-        title:"AliaSqlRunner",
+        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlSettings',
+        title:"AliaSqlSettings",
         description:""
     });
 
