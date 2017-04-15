@@ -89,6 +89,13 @@
 
                     </ul>
                 </li>
+                <li class="treeview">
+                    <a href="/Cake.AliaSql/docs/contributing">Contributing</a> <a href="#" class="expand"></a>
+                    <ul class="treeview-menu">
+                                        <li><a href="/Cake.AliaSql/docs/contributing/how-to">How to contribute</a></li>
+
+                    </ul>
+                </li>
 
                     </ul>
                 </section>                
@@ -126,6 +133,21 @@ would like to add then you can edit the content directly on GitHub.</p>
 					</table>
 				</div>
 			</div> 
+    <h1>Contributing</h1>
+			<div class="box">
+				<div class="box-body no-padding">
+					<table class="table table-striped table-hover two-cols-alt table-responsive">
+						
+						<tbody>
+								<tr>
+									<td><strong><a href="/Cake.AliaSql/docs/contributing/how-to">How to contribute</a></strong></td>
+									<td>
+									</td>
+								</tr>
+						</tbody>				
+					</table>
+				</div>
+			</div> 
 
 	</section>
                 
@@ -142,7 +164,39 @@ would like to add then you can edit the content directly on GitHub.</p>
             </footer>
         </div>
         <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
-        
+        <div class="github-button">
+    <a href="https://github.com/cake-contrib/Cake.AliaSql"><i class="fa fa-github"></i> GitHub</a>
+</div>
+<script>
+    ((window.gitter = {}).chat = {}).options = {
+        room: 'cake-contrib/Lobby'
+    };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+<script type="text/javascript" src="/assets/js/anchor.min.js"></script>
+<script type="text/javascript" src="/assets/js/clipboard.min.js"></script>
+<script type="text/javascript">
+    anchors.options.placement = 'left';
+    anchors.add();
+
+    var snippets = document.querySelectorAll("pre > code");
+    [].forEach.call(snippets, function(snippet) {
+        snippet.insertAdjacentHTML("beforebegin", "<button class='btn-copy' data-clipboard-snippet><img class='clippy' width=13 src='/assets/images/clippy.svg' alt='Copy to clipboard'></button>");
+    });
+    var clipboardSnippets = new Clipboard('[data-clipboard-snippet]', {
+        target: function(trigger) {
+            return trigger.nextElementSibling;
+        }
+    });
+    clipboardSnippets.on('success', function(e) {
+        e.clearSelection();
+        showTooltip(e.trigger, "Copied!");
+    });
+    clipboardSnippets.on('error', function(e) {
+        showTooltip(e.trigger, fallbackMessage(e.action));
+    });
+</script>
         <script>           
             // Close the sidebar if we select an anchor link
             $(".main-sidebar a[href^='#']:not('.expand')").click(function(){
