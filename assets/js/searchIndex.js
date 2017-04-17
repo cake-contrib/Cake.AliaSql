@@ -34,8 +34,8 @@ var searchModule = function() {
 
     a({
         id:0,
-        title:"AliaSqlRunner",
-        content:"AliaSqlRunner",
+        title:"AliaSqlExtensions",
+        content:"AliaSqlExtensions",
         description:'',
         tags:''
     });
@@ -50,15 +50,15 @@ var searchModule = function() {
 
     a({
         id:2,
-        title:"AliaSqlExtensions",
-        content:"AliaSqlExtensions",
+        title:"AliaSqlRunner",
+        content:"AliaSqlRunner",
         description:'',
         tags:''
     });
 
     y({
-        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlRunner',
-        title:"AliaSqlRunner",
+        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlExtensions',
+        title:"AliaSqlExtensions",
         description:""
     });
 
@@ -69,8 +69,8 @@ var searchModule = function() {
     });
 
     y({
-        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlExtensions',
-        title:"AliaSqlExtensions",
+        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlRunner',
+        title:"AliaSqlRunner",
         description:""
     });
 
