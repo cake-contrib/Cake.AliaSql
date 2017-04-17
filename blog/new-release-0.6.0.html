@@ -162,11 +162,11 @@
 <script type="text/javascript" src="/Cake.AliaSql/assets/js/clipboard.min.js"></script>
 <script type="text/javascript">
     anchors.options.placement = 'left';
-    anchors.add();
+    anchors.add('#content > h1,h2,h3,h4');
 
     var snippets = document.querySelectorAll("pre > code");
     [].forEach.call(snippets, function(snippet) {
-        snippet.insertAdjacentHTML("beforebegin", "<button class='btn-copy' data-clipboard-snippet><img class='clippy' width=13 src='/assets/images/clippy.svg' alt='Copy to clipboard'></button>");
+        snippet.insertAdjacentHTML("beforebegin", "<button class='btn-copy' data-clipboard-snippet><img class='clippy' width=13 src='/Cake.AliaSql/assets/images/clippy.svg' alt='Copy to clipboard'></button>");
     });
     var clipboardSnippets = new Clipboard('[data-clipboard-snippet]', {
         target: function(trigger) {

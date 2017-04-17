@@ -34,6 +34,14 @@ var searchModule = function() {
 
     a({
         id:0,
+        title:"AliaSqlRunner",
+        content:"AliaSqlRunner",
+        description:'',
+        tags:''
+    });
+
+    a({
+        id:1,
         title:"AliaSqlExtensions",
         content:"AliaSqlExtensions",
         description:'',
@@ -41,19 +49,17 @@ var searchModule = function() {
     });
 
     a({
-        id:1,
+        id:2,
         title:"AliaSqlSettings",
         content:"AliaSqlSettings",
         description:'',
         tags:''
     });
 
-    a({
-        id:2,
+    y({
+        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlRunner',
         title:"AliaSqlRunner",
-        content:"AliaSqlRunner",
-        description:'',
-        tags:''
+        description:""
     });
 
     y({
@@ -65,12 +71,6 @@ var searchModule = function() {
     y({
         url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlSettings',
         title:"AliaSqlSettings",
-        description:""
-    });
-
-    y({
-        url:'/Cake.AliaSql/Cake.AliaSql/api/Cake.AliaSql/AliaSqlRunner',
-        title:"AliaSqlRunner",
         description:""
     });
 
