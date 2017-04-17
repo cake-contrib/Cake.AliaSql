@@ -16,7 +16,7 @@
 
     var snippets = document.querySelectorAll("pre > code");
     [].forEach.call(snippets, function(snippet) {
-        snippet.insertAdjacentHTML("beforebegin", "<button class='btn-copy' data-clipboard-snippet><img class='clippy' width=13 src='/assets/images/clippy.svg' alt='Copy to clipboard'></button>");
+        snippet.insertAdjacentHTML("beforebegin", "<button class='btn-copy' data-clipboard-snippet><img class='clippy' width=13 src='@Context.GetLink("/assets/images/clippy.svg")' alt='Copy to clipboard'></button>");
     });
     var clipboardSnippets = new Clipboard('[data-clipboard-snippet]', {
         target: function(trigger) {
