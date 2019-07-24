@@ -53,20 +53,6 @@ var searchModule = function() {
     a(
         {
             id:1,
-            title:"AliaSqlExtensions",
-            content:"AliaSqlExtensions",
-            description:'',
-            tags:''
-        },
-        {
-            url:'/Cake.AliaSql/api/Cake.AliaSql/AliaSqlExtensions',
-            title:"AliaSqlExtensions",
-            description:""
-        }
-    );
-    a(
-        {
-            id:2,
             title:"AliaSqlSettings",
             content:"AliaSqlSettings",
             description:'',
@@ -75,6 +61,20 @@ var searchModule = function() {
         {
             url:'/Cake.AliaSql/api/Cake.AliaSql/AliaSqlSettings',
             title:"AliaSqlSettings",
+            description:""
+        }
+    );
+    a(
+        {
+            id:2,
+            title:"AliaSqlExtensions",
+            content:"AliaSqlExtensions",
+            description:'',
+            tags:''
+        },
+        {
+            url:'/Cake.AliaSql/api/Cake.AliaSql/AliaSqlExtensions',
+            title:"AliaSqlExtensions",
             description:""
         }
     );
