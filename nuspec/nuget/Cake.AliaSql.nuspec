@@ -8,7 +8,8 @@
     <owners>Richard Simpson, cake-contrib</owners>
     <description>AliaSql extension for Cake.</description>
     <summary>Adds AliaSql helpers for cake scripts.</summary>
-    <licenseUrl>https://github.com/cake-contrib/Cake.AliaSql/blob/develop/LICENSE</licenseUrl>
+    <license type="expression">Apache-2.0</license>
+    <repository type="git" url="https://github.com/cake-contrib/Cake.AliaSql.git"/>
     <projectUrl>https://github.com/cake-contrib/Cake.AliaSql</projectUrl>
     <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
