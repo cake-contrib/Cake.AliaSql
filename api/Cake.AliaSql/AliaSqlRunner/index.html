@@ -7,7 +7,6 @@
         <link rel="shortcut icon" href="/Cake.AliaSql/assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/Cake.AliaSql/assets/img/favicon.ico" type="image/x-icon">
         <title>Cake.AliaSql - API - AliaSqlRunner Class</title>
-        <link href="/Cake.AliaSql/assets/css/mermaid.css" rel="stylesheet">
         <link href="/Cake.AliaSql/assets/css/highlight.css" rel="stylesheet">
         <link href="/Cake.AliaSql/assets/css/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="/Cake.AliaSql/assets/css/adminlte/AdminLTE.css" rel="stylesheet">
@@ -22,6 +21,7 @@
         <script src="/Cake.AliaSql/assets/js/jquery.slimscroll.min.js"></script>
         <script src="/Cake.AliaSql/assets/js/jquery.sticky-kit.min.js"></script>
         <script src="/Cake.AliaSql/assets/js/mermaid.min.js"></script>
+        <script src="/Cake.AliaSql/assets/js/svg-pan-zoom.min.js"></script>
         <!--[if lt IE 9]>
         <script src="/Cake.AliaSql/assets/js/html5shiv.min.js"></script>
         <script src="/Cake.AliaSql/assets/js/respond.min.js"></script>
@@ -57,6 +57,7 @@
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">                            
                                     <li><a href="/Cake.AliaSql/docs">Documentation</a></li>
+        <li><a href="/Cake.AliaSql/tasks">Tasks</a></li>
         <li><a href="/Cake.AliaSql/blog">Blog</a></li>
         <li class="active"><a href="/Cake.AliaSql/api">API</a></li>
  
@@ -80,10 +81,11 @@
 </div>
 
                 </section>
-                <section class="sidebar">                    
+                <section class="sidebar">    
+                                     
                     	
-	    <script src="/assets/js/lunr.min.js"></script>
-    <script src="/assets/js/searchIndex.js"></script>
+	    <script src="/Cake.AliaSql/assets/js/lunr.min.js"></script>
+    <script src="/Cake.AliaSql/assets/js/searchIndex.js"></script>
     <div class="sidebar-form">
         <div class="input-group">
             <input type="text" name="search" id="search" class="form-control" placeholder="Search Types...">
@@ -108,7 +110,7 @@
             } else {					
                 for(var i = 0; i < results.length; ++i){
                     var res = results[i];
-                    listHtml += "<li><a href='" + res.url + "'>" + res.title + "</a></li>";
+                    listHtml += "<li><a href='" + res.url + "'>" + htmlEscape(res.title) + "</a></li>";
                 }				
             }
             listHtml += "</ul>";				
@@ -120,6 +122,13 @@
                 runSearch($("#search").val());
             });
         });
+
+        function htmlEscape(html) {
+            return document.createElement('div')
+                .appendChild(document.createTextNode(html))
+                .parentNode
+                .innerHTML;
+        }
     </script>
 	
     <hr>
@@ -136,6 +145,7 @@
 
 
                     </ul>
+                            
                 </section>                
             </aside>
             
@@ -169,7 +179,7 @@
 								<dt>Base Types</dt>
 								<dd>
 									<ul class="list-unstyled">										
-											<li>Tool<wbr>&lt;<wbr>Alia<wbr>Sql<wbr>Settings&gt;<wbr></li>								
+											<li>Tool<wbr>&lt;<a href="/Cake.AliaSql/api/Cake.AliaSql/AliaSqlSettings">AliaSqlSettings</a>&gt;<wbr></li>								
 									</ul>
 								</dd>				
 							
@@ -178,8 +188,8 @@
 					</div>		
 					<div class="col-md-6">
 						<div class="mermaid">
-							graph TD
-	Base0["Tool&lt;AliaSqlSettings&gt;"]--&gt;Type
+							graph BT
+	Type--&gt;Base0["Tool&lt;AliaSqlSettings&gt;"]
 	Type["AliaSqlRunner"]
 class Type type-node
 
@@ -191,6 +201,7 @@ class Type type-node
 
 	<h1 id="Syntax">Syntax</h1>
 	<pre><code>public sealed class AliaSqlRunner : Tool&lt;AliaSqlSettings&gt;</code></pre>
+
 
 
 
@@ -345,22 +356,53 @@ class Type type-node
                 $(document.body).removeClass('sidebar-open');
             });
             
-            $(document).load(function() {
+            $(document).ready(function() {
                 mermaid.initialize(
                 {
                     flowchart:
                     {
-                        htmlLabels: false,
-                        useMaxWidth:false
-                    }
-                });  
-                mermaid.init(undefined, ".mermaid")
-                $('svg').addClass('img-responsive');
+                        useMaxWidth: false
+                    },
+					startOnLoad: false,
+					cloneCssStyles: false
+                });     
+                mermaid.init(undefined, ".mermaid");
+
+                // Remove the max-width setting that Mermaid sets
+                var mermaidSvg = $('.mermaid svg');
+                mermaidSvg.addClass('img-responsive');
+                mermaidSvg.css('max-width', '');
+
+                // Make it scrollable
+				var target = document.querySelector(".mermaid svg");
+				if(target !== null)
+				{
+					var panZoom = window.panZoom = svgPanZoom(target, {
+						zoomEnabled: true,
+						controlIconsEnabled: true,
+						fit: true,
+						center: true,
+                        maxZoom: 20,
+                        zoomScaleSensitivity: 0.6
+					});			                          
+
+                    // Do the reset once right away to fit the diagram
+                    panZoom.resize();
+                    panZoom.fit();
+                    panZoom.center();
+                    
+                    $(window).resize(function(){
+                        panZoom.resize();
+                        panZoom.fit();
+                        panZoom.center();
+                    });
+				}
                 
                 $('pre code').each(function(i, block) {
                     hljs.highlightBlock(block);
                 });  
             });
+
             hljs.initHighlightingOnLoad();
 
             // Back to top
