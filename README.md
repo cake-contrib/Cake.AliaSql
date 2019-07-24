@@ -5,7 +5,7 @@ AliaSql Script Alias for [Cake](https://github.com/cake-build/cake) build system
 
 ## Information
 
-||Stable|Pre-release|
+| |Stable|Pre-release|
 |:--:|:--:|:--:|
 |GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/cake-contrib/Cake.AliaSql.svg)](https://github.com/cake-contrib/Cake.AliaSql/releases/latest)|
 |NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.AliaSql.svg)](https://www.nuget.org/packages/Cake.AliaSql)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.AliaSql.svg)](https://www.nuget.org/packages/Cake.AliaSql)|

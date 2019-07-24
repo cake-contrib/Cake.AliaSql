@@ -8,16 +8,20 @@
     <owners>Richard Simpson, cake-contrib</owners>
     <description>AliaSql extension for Cake.</description>
     <summary>Adds AliaSql helpers for cake scripts.</summary>
-    <licenseUrl>https://github.com/cake-contrib/Cake.AliaSql/blob/develop/LICENSE</licenseUrl>
+    <license type="expression">Apache-2.0</license>
+    <repository type="git" url="https://github.com/cake-contrib/Cake.AliaSql.git"/>
     <projectUrl>https://github.com/cake-contrib/Cake.AliaSql</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Cake Contributions 2016 - Present</copyright>
     <tags>Cake Script AliaSql</tags>
   </metadata>
   <files>
-    <file src="Cake.AliaSql.dll" target="lib\net45" />
-    <file src="Cake.AliaSql.pdb" target="lib\net45" />
-    <file src="Cake.AliaSql.xml" target="lib\net45" />
+    <file src="net46\Cake.AliaSql.dll" target="lib\net46" />
+    <file src="net46\Cake.AliaSql.pdb" target="lib\net46" />
+    <file src="net46\Cake.AliaSql.xml" target="lib\net46" />
+    <file src="netstandard2.0\Cake.AliaSql.dll" target="lib\netstandard2.0" />
+    <file src="netstandard2.0\Cake.AliaSql.pdb" target="lib\netstandard2.0" />
+    <file src="netstandard2.0\Cake.AliaSql.xml" target="lib\netstandard2.0" />
   </files>
 </package>
