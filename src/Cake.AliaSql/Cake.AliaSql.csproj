@@ -16,7 +16,7 @@
     <PackageProjectUrl>https://github.com/cake-contrib/Cake.AliaSql</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright (c) Cake Contributions 2016 - Present</Copyright>
-    <PackageTags>Cake Script AliaSql</PackageTags>
+    <PackageTags>Cake;Script;AliaSql;cake-build;build;addin;cake-addin</PackageTags>
   </PropertyGroup>
   
   <ItemGroup>
