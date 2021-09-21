@@ -343,3 +343,4 @@ tools/**
 BuildArtifacts/*
 
 .DS_Store
+/config.wyam.*

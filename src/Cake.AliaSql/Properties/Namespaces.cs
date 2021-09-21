@@ -4,7 +4,7 @@
 namespace Cake.AliaSql
 {
     /// <summary>
-    /// This namespace contain types related to running AliaSql tool.
+    /// This namespace contains types related to running AliaSql tool.
     /// </summary>
     [CompilerGenerated]
     internal class NamespaceDoc
