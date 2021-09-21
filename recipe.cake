@@ -1,24 +1,22 @@
-#load nuget:?package=Cake.Recipe&version=1.0.0
+#load nuget:?package=Cake.Recipe&version=2.2.1
 
 Environment.SetVariableNames();
 
-BuildParameters.SetParameters(context: Context,
-                            buildSystem: BuildSystem,
-                            sourceDirectoryPath: "./src",
-                            title: "Cake.AliaSql",
-                            repositoryOwner: "cake-contrib",
-                            repositoryName: "Cake.AliaSql",
-                            appVeyorAccountName: "cakecontrib",
-                            shouldRunDotNetCorePack: true,
-                            shouldRunGitVersion: true);
+BuildParameters.SetParameters(
+    context: Context,
+    buildSystem: BuildSystem,
+    sourceDirectoryPath: "./src",
+    title: "Cake.AliaSql",
+    repositoryOwner: "cake-contrib",
+    repositoryName: "Cake.AliaSql",
+    appVeyorAccountName: "cakecontrib",
+    shouldRunDotNetCorePack: true,
+    shouldUseDeterministicBuilds: true,
+    preferredBuildProviderType: BuildProviderType.GitHubActions,
+    preferredBuildAgentOperatingSystem: PlatformFamily.Windows);
 
 BuildParameters.PrintParameters(Context);
 
-ToolSettings.SetToolSettings(context: Context,
-                            dupFinderExcludePattern: new string[] {
-                                BuildParameters.RootDirectoryPath + "/src/Cake.AliaSql.Tests/*.cs", BuildParameters.RootDirectoryPath + "/src/Cake.AliaSql/**/*.AssemblyInfo.cs" },
-                            testCoverageFilter: "+[*]* -[xunit.*]* -[Cake.Core]* -[Cake.Testing]* -[*.Tests]* ",
-                            testCoverageExcludeByAttribute: "*.ExcludeFromCodeCoverage*",
-                            testCoverageExcludeByFile: "*/*Designer.cs;*/*.g.cs;*/*.g.i.cs");
+ToolSettings.SetToolSettings(context: Context);
 
 Build.RunDotNetCore();
