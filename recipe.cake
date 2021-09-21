@@ -11,7 +11,9 @@ BuildParameters.SetParameters(
     repositoryName: "Cake.AliaSql",
     appVeyorAccountName: "cakecontrib",
     shouldRunDotNetCorePack: true,
-    shouldUseDeterministicBuilds: true);
+    shouldUseDeterministicBuilds: true,
+    preferredBuildProviderType: BuildProviderType.GitHubActions,
+    preferredBuildAgentOperatingSystem: PlatformFamily.Windows);
 
 BuildParameters.PrintParameters(Context);
 
