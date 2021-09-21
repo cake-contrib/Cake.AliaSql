@@ -10,7 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{60E66829-5894-4314-9490-A080597032A2}"
 	ProjectSection(SolutionItems) = preProject
 		..\build.ps1 = ..\build.ps1
-		..\setup.cake = ..\setup.cake
+		..\recipe.cake = ..\recipe.cake
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Meta", "Meta", "{795052E7-84E8-4B82-AF02-23D6141F9755}"
