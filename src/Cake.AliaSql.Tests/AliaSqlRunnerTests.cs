@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cake.Core;
 using Cake.Core.IO;
 using NSubstitute;
@@ -26,9 +27,23 @@ namespace Cake.AliaSql.Tests
                 Assert.Equal("AliaSql: Could not locate executable.", result.Message);
             }
 
+            public static IEnumerable<object[]> GetToolPathData()
+            {
+                if (Enum.GetName(typeof(PlatformID), Environment.OSVersion.Platform)
+                    .StartsWith("win", StringComparison.InvariantCulture))
+                {
+                    yield return new object[] { "C:/AliaSql/AliaSql.exe", "C:/AliaSql/AliaSql.exe" };
+                }
+                else
+                {
+                    yield return new object[] { "/usr/bin/AliaSql/AliaSql.exe", "/usr/bin/AliaSql/AliaSql.exe" };
+                }
+                
+                yield return new object[] { "./tools/AliaSQL/tools/AliaSQL.exe", "/Working/tools/AliaSQL/tools/AliaSQL.exe" };
+            }
+
             [Theory]
-            [InlineData("C:/AliaSql/AliaSql.exe", "C:/AliaSql/AliaSql.exe")]
-            [InlineData("./tools/AliaSQL/tools/AliaSQL.exe", "/Working/tools/AliaSQL/tools/AliaSQL.exe")]
+            [MemberData(nameof(GetToolPathData))]
             public void Should_Use_AliaSql_Runner_From_Tool_Path_If_Provided(string toolPath, string expected)
             {
                 // Given
@@ -43,7 +58,7 @@ namespace Cake.AliaSql.Tests
                     fp => fp.FullPath == expected),
                     Arg.Any<ProcessSettings>());
             }
-
+            
             [Fact]
             public void Should_Find_AliaSql_Runner_If_Tool_Path_Not_Provided()
             {
