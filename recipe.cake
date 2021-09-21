@@ -10,7 +10,8 @@ BuildParameters.SetParameters(
     repositoryOwner: "cake-contrib",
     repositoryName: "Cake.AliaSql",
     appVeyorAccountName: "cakecontrib",
-    shouldRunDotNetCorePack: true);
+    shouldRunDotNetCorePack: true,
+    shouldUseDeterministicBuilds: true);
 
 BuildParameters.PrintParameters(Context);
 
