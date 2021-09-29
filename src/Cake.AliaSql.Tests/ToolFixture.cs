@@ -51,7 +51,7 @@ namespace Cake.Common.Tests.Fixtures
             ToolLocator = new ToolLocator(
                 Environment,
                 new ToolRepository(Environment),
-                new ToolResolutionStrategy(FileSystem, Environment, Globber, new FakeConfiguration())
+                new ToolResolutionStrategy(FileSystem, Environment, Globber, new FakeConfiguration(), new FakeLog())
                 );
 
             // Create the default tool path.
