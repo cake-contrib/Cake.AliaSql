@@ -45,6 +45,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Fetch all tags and branches
         run: git fetch --prune --unshallow
+      - uses: actions/setup-dotnet@v1.9.0
+        with:
+          # codecov still needs 2.1
+          dotnet-version: |
+            2.1.818
+            3.1.413
+            5.0.403
+            6.0.100
       - name: Cache Tools
         uses: actions/cache@v2
         with:
